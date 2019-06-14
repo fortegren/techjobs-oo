@@ -19,14 +19,24 @@ public class JobForm {
     @Size(min=1, message = "Name may not be empty")
     private String name;
 
-    @NotNull
+    @NotNull (message = "employer")
     private int employerId;
+
+    @NotNull (message = "location")
+    private int locationId;
+
+    @NotNull (message = "skill")
+    private int skill;
+
+    @NotNull (message = "position")
+    private int positionId;
 
     /*
         TODO #3 - Included other fields needed to create a job,
         with correct validation attributes and display names.
         Don't forget to add getters and setters
      */
+
 
     private ArrayList<Employer> employers;
     private ArrayList<Location> locations;
@@ -40,8 +50,10 @@ public class JobForm {
         /*
             TODO #4 - populate the other ArrayList collections needed in the view
         */
-
         employers = jobData.getEmployers().findAll();
+        locations = jobData.getLocations().findAll();
+        coreCompetencies = jobData.getCoreCompetencies().findAll();
+        positionTypes = jobData.getPositionTypes().findAll();
 
     }
 
@@ -91,5 +103,29 @@ public class JobForm {
 
     public void setPositionTypes(ArrayList<PositionType> positionTypes) {
         this.positionTypes = positionTypes;
+    }
+
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
+    }
+
+    public int getSkill() {
+        return skill;
+    }
+
+    public void setSkill(int skill) {
+        this.skill = skill;
+    }
+
+    public int getPositionId() {
+        return positionId;
+    }
+
+    public void setPositionId(int positionId) {
+        this.positionId = positionId;
     }
 }
